@@ -1,0 +1,141 @@
+body{
+   background-color: #000;
+}
+.container{
+    background: url("../img/top-padding.jpg") no-repeat center 0;
+}
+.heading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+    height: 72px;
+    background-color: rgba(0,0,0,.3);
+}
+.heading_nav{
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+    clear: both;
+}
+.heading_log{
+    float: left;
+}
+.heading_log img{
+    width: 100px;
+    height: auto;
+    margin: 5px 0;
+}
+.heading_navbar{
+    float: left;
+    margin-left: 100px;
+}
+.heading_navbar>ul{
+    list-style-type: none;
+}
+.heading_navbar>ul>li{
+    float: left;
+    padding: 0 15px;
+}
+.heading_navbar>ul>li:hover{
+    background-color: rgba(0,0,0,.6);
+    font-weight: bold;
+}
+.heading_navbar a{
+    width: 60px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    display: block;
+    margin: 13.5px 0;
+    color: #f2f4f5;
+    text-shadow: 0 1px 1px rgba(0,0,0,.12);
+    font-size: 14px;
+}
+.heading_login{
+    float: right;
+}
+.heading_login a{
+    height: 45px;
+    line-height: 45px;
+    float: left;
+    display: block;
+    color: #f2f4f5;
+    font-size: 13px;
+}
+.heading_login a:hover{
+    text-decoration: underline;
+    color: #FFA500;
+}
+.heading_login span{
+    display: block;
+    margin: 13.5px 10px;
+}
+.wrapper{
+    width: 1000px;
+    margin: 0 auto;
+    height: 1000px;
+    text-align: center;
+    background: url("../img/top-center.jpg") no-repeat;
+}
+.wrapper img{
+    position: absolute;
+    top: 110px;
+    left: 43.4%;
+}
+.body{
+    padding-top:560px;
+}
+.body_left{
+    width: 260px;
+    float: left;
+}
+.btn{
+    width: 230px;
+    height: 51px;
+    line-height: 51px;
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    background: url("../img/blue_btn.png")no-repeat;
+}
+.btn:hover{
+    background: url("../img/red_btn.png")no-repeat;
+}
+.body_left a,.body_right a{
+     margin: 10px 15px;
+ }
+.body_left>div,.body_right>div{
+    /*占位*/
+    width: 230px;
+    height: 330px;
+    margin: 0 15px;
+    background-color: #00897b;
+}
+.body_center{
+    float: left;
+}
+.body_right{
+    width: 260px;
+    float: right;
+}
+.body_top{
+    height: 100px;
+    margin: 0 15px;
+    margin-bottom: 10px;
+    background-color: #00897b;
+}
+.footing{
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 93px;
+    height: 100px;
+    overflow: hidden;
+    text-align: center;
+    color: #363636;
+}
+.footing a{
+    color: #363636;
+}

@@ -1,0 +1,353 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8">
+<head>
+    <title>CSS hack大全</title>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <meta name="generator" content="editplus" />
+    <meta name="author" content="吴雷君" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <style>
+        @import url("http://style.china.alibaba.com/css/blog/antku/alicn_bb_v0.3.css?t=0708241");
+    </style>
+    <link rel="stylesheet" href="http://style.china.alibaba.com/css/fdevlib/reset/reset.css"  />
+    <link rel="stylesheet" href="http://style.china.alibaba.com/css/fdevlib/type/type.css"  />
+
+    <style>
+        @import url("http://style.china.alibaba.com/css/blog/antku/alicn_bb_v0.3.css?t=0708241");
+        body { background-color: #eee; font-size: 12px; padding: 5px;min-width:960px; }
+        h1 { font-family: 黑体; font-size: 25px; line-height: 36px; }
+        li, p { clear: both; line-height: 20px; }
+        em { color: #ff6600; border-bottom: dotted 1px #ff6600; }
+        .pl-24 { padding-left: 24px; }
+        .pl-48 { padding-left: 48px; }
+        .pl-72 { padding-left: 72px; }
+        .pl-96 { padding-left: 96px; }
+        .pl-120 { padding-left: 120px; }
+        .pl-144 { padding-left: 144px; }
+        .text { border: solid 1px #ff6600; padding: 2px; }
+        .button { margin: 2px; }
+        .split { border-top: dotted 1px #000; line-height: 1px; height: 0; margin: 4px 0; overflow: hidden; }
+        .blue { color: #0000ff; }
+        .red { color: #ff0000; }
+        .orange { color: #9e1515; }
+        .green { color: #008000; }
+        .dsh{border:1px dashed #666}
+        .innerLord{background:pink;}
+        .innerDiff{background:#00deff;}
+    </style>
+
+    <script src="http://style.china.alibaba.com/js/fdevlib/core/fdev-min.js" ></script>
+
+    <style>
+        .bb{text-align:center;line-height:20px;height:240px;color:#f00;font-size:16px;font-weight:bold}
+        .bb{background-color:#f1ee18;/*所有识别*/background-color:#00deff\9;/*ie678识别*/+background-color:#a200ff;/*ie67识别*/_background-color:#1e0bd1/*ie6识别*/}
+
+        @media screen and (-webkit-min-device-pixel-ratio:0){.bb{background-color:#f1ee18}}{} /* safari(Chrome) 有效 */
+        @media all and (min-width: 0px){ .bb{background-color:#f1ee18; /*opera and safari and firefox*/ background-color:#4cac70\0;} /* 仅 opera 有效 */ .bb .opera div{height:0\0;overflow:hidden;}}{}
+
+        /* 以上两种方法，均不能区分 safari 和 opera ，但可以配合使用区分 firefox 因为后者支持firefox */
+
+        .bb-old, x:-moz-any-link, x:default{background-color:#4eff00;/*ie7 firefox 识别 */+background-color:#a200ff/*再区分一次ie7*/}
+        @-moz-document url-prefix(){.bb{background-color:#4eff00;}}/*新增仅对firefox 识别的方法*/
+
+        * +html .bb{background-color:#a200ff;}/* 仅ie7 识别 */
+
+        /* 一般情况下 我们区分ie7 只用 +background-color 配合 _background-color 就行了
+        如果必须写 .bb, x:-moz-any-link, x:default 这样的代码区分 firefox  则谨记此写法对ie7也有效，故在其中要再重写一次 +background-color
+        或者使用 * +html .bb{background-color:blue;} 方法仅对 ie7 有效
+        新增说明：@-moz-document url-prefix(){} 此写法仅对firefox 有效
+        */
+
+        .browsers{background-color:#eee;}
+        .browsers td{width:8%;text-align:center;padding:8px 8px 0;vertical-align:top;font-size:14px;}
+
+        .browsercolor{font-size:18px;font-weight:bold;}
+        .browsercolor div{height:80px;padding-top:10px}
+        .ie6 div{background-color:#1e0bd1;}
+        .ie7 div{background-color:#a200ff;}
+        .ie8 div{background-color:#00deff;}
+        .firefox div{background-color:#4eff00;}
+        .opera div{background-color:#4cac70;}
+        .other div{background-color:#f1ee18;}
+        #tipTable td,#tipTable th{border:1px solid black;width:120px;height:16px;text-align:center;}
+        #wordTable td{margin-left:8px;}
+
+        #firefoxTip{display:none;}
+        #firefoxTip-old, x:-moz-any-link, x:default{display:block;/*ie7 firefox 识别 */+display:none;/*再区分一次ie7*/}
+        @-moz-document url-prefix(){#firefoxTip{display:block;}}/*新增仅对firefox 识别的方法*/
+
+        #ChromeTip{display:none;}
+
+        @media screen and (-webkit-min-device-pixel-ratio:0){#ChromeTip{display:block;}}{} /* safari(Chrome) 有效 */
+        @media all and (min-width: 0px){#ChromeTip{display:none\0;} /* 仅 opera 有效 */ }{}
+
+
+        .browsercolor p{height:20px;background-color:#eee;}
+
+        .bb .ie6 p{_display:block;_background-color:#1e0bd1;}
+        * +html .bb .ie7 p{background-color:#a200ff}/* 仅ie7 识别 */
+        .bb .ie8 p{background-color:#00deff\9;+background-color:#eee}
+
+        @media screen and (-webkit-min-device-pixel-ratio:0){.bb .other p{background-color:#f1ee18;}}{} /* safari(Chrome) 有效 */
+
+        @media all and (min-width: 0px){ .bb .opera p{background-color:#4cac70\0}}{} /* opera 有效 */
+
+        .bb-old .firefox p, x:-moz-any-link, x:default{background-color:#4eff00;/*ie7 firefox 识别 */,+background-color:#eee;/*再区分一次ie7*/}
+        @-moz-document url-prefix(){.bb .firefox p{background-color:#4eff00;}}/*新增仅对firefox 识别的方法*/
+    </style>
+</head>
+
+<body>
+
+<h1>part1 —— 浏览器测试仪器，测试您现在使用的浏览器类型</h1>
+<div class="bb">
+    <table class="browsers" width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>IE6</td><td>&nbsp;</td><td>IE7</td><td>&nbsp;</td><td>IE8</td><td>&nbsp;</td><td>Firefox</td><td>&nbsp;</td><td>Opera</td><td>&nbsp;</td><td>Safari <br /> (Chrome)</td><td>&nbsp;</td>
+        </tr>
+        <tr class="browsercolor" >
+            <td class="ie6" ><div>IE6</div><p></p></td><td>&nbsp;</td><td class="ie7" ><div>IE7</div><p></p></td><td>&nbsp;</td><td class="ie8" ><div>IE8</div><p></p></td><td>&nbsp;</td><td class="firefox" ><div>Firefox</div><p></p></td><td>&nbsp;</td><td class="opera"><div>Opera</div><p></p></td><td>&nbsp;</td><td class="other"><div >Safari <br />(Chrome)</div><p></p></td><td>&nbsp;</td>
+        </tr>
+    </table>
+    <br />
+    <span style="display:none;display:block\0;display:none\9;">您现在使用的浏览器是Opera。Opera游览器很时髦么。</span>
+    <span id="firefoxTip">您现在使用的浏览器是Firefox。Firefox是很强大的游览器。</span>
+    <span id="ChromeTip">您现在使用的浏览器是Safari(Chrome)。Safari和Chrome使用的都是Webkit内核。</span>
+    <!--[if IE 8]>您现在使用的浏览器是IE8。新版IE8的功能可是不少呢。<![endif]-->
+    <!--[if IE 7]>您现在使用的浏览器是IE7。IE7还可以凑合着用！<![endif]-->
+    <!--[if IE 6]>您现在使用的浏览器是IE6。IE6可是有点落后了！<![endif]-->
+</div>
+<div  style="height:30px" ></div>
+
+<h1>part2 —— CSS hack技巧大全</h1>
+<ul>
+    <li class="">——作者：吴雷君</li>
+    <li class="b m">兼容范围：</li>
+    <li class="pl-24">IE:6.0+，FireFox:2.0+，Opera 10.0+，Sarari 3.0+，Chrome</li>
+
+</ul>
+
+
+<ul>
+    <li class="b m">参考资料：</li>
+    <li class="pl-24">
+        <p class="b">各游览器常用兼容标记一览表:</p>
+    </li>
+    <li class="pl-48">
+        <table id="tipTable">
+            <tr class="innerLord">
+                <th>标记</th><th>IE6</th><th>IE7</th><th>IE8</th><th>FF</th><th>Opera</th><th>Sarari</th>
+            </tr>
+            <tr class="innerDiff">
+                <td>[*+><]</td><td>&#8730;</td><td>&#8730;</td><td>X</td><td>X</td><td>X</td><td>X</td>
+            </tr>
+            <tr class="innerDiff">
+                <td>&#95;</td><td>&#8730;</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td>
+            </tr>
+            <tr class="innerDiff">
+                <td>&#92;9</td><td>&#8730;</td><td>&#8730;</td><td>&#8730;</td><td>X</td><td>X</td><td>X</td>
+            </tr>
+            <tr class="innerDiff">
+                <td>&#92;0</td><td>X</td><td>X</td><td>&#8730;</td><td>X</td><td>&#8730;</td><td>X</td>
+            </tr>
+            <tr class="innerDiff">
+                <td>@media screen and (-webkit-min-device-pixel-ratio:0){<span class="red">.bb </span>{}}</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td><td>&#8730;</td>
+            </tr>
+            <tr class="innerDiff">
+                <td><span class="red">.bb </span>, x:-moz-any-link, x:default</td><td>X</td><td>&#8730;</td><td>X</td><td>&#8730;(ff3.5及以下)</td><td>X</td><td>X</td>
+            </tr>
+            <tr class="innerDiff">
+                <td>@-moz-document url-prefix(){<span class="red">.bb</span>{}}</td><td>X</td><td>X</td><td>X</td><td>&#8730;</td><td>X</td><td>X</td>
+            </tr>
+            <tr class="innerDiff">
+                <td>@media all and (min-width: 0px){<span class="red">.bb </span>{}}</td><td>X</td><td>X</td><td>X</td><td>&#8730;</td><td>&#8730;</td><td>&#8730;</td>
+            </tr>
+            <tr class="innerDiff">
+                <td>* +html <span class="red">.bb </span>{}</td><td>X</td><td>√</td><td>X</td><td>X</td><td>X</td><td>X</td>
+            </tr>
+            <tr class="innerLord">
+                <td>游览器内核</td><td>Trident</td><td>Trident</td><td>Trident</td><td>Gecko</td><td>Presto</td><td>WebKit</td>
+            </tr>
+        </table>
+        <div class="">（以上 <span class="red">.bb </span>可更换为其它样式名）</div>
+    </li>
+    <li class="pl-24">
+        <p class="b">注意点：</p>
+    </li>
+    <li class="pl-48">
+        <p class="">
+            网上很多资料中常常把!important也作为一个hack手段，其实这是一个误区。!important常常被我们用来更改样式，而不是兼容hack。造成这个误区的原因是IE6在某些情况下不主动识别!important,以至于常常被人误用做识别IE6的hack。可是，大家注意一下，IE6只是在某些情况下不识别<span class="red">（ie6下，同一个大括号里对同一个样式属性定义，其中一个加important 则important标记是被忽略的，例：{background:red!important; background:green;} ie6下解释为背景色green，其它浏览器解释为背景色red；如果这同一个样式在不同大括号里定义，其中一个加important 则important发挥正常作用，例：div{background:red!important}  div{background:green}，这时所有浏览器统一解释为背景色red。）</span>
+        </p>
+        <hr />
+    <li class="b m">实例讲解：</li>
+    <li class="pl-24">
+        <p class="b">Hack应用情境（一）</p>
+    </li>
+    <li class="pl-48">
+        <p class="b">适用范围：IE:6.0,IE7.0,IE8.0之间的兼容
+    </li>
+    <li class="pl-24">
+        <p class="b">实例说明：</p>
+    </li>
+    <li class="pl-48">
+        此例中我们使用了渐进识别的方式，从总体中逐渐排除局部。首先，巧妙的使用“<span class="red">\9</span>”这一标记，将IE游览器从所有情况中分离出来。接着，再次使用“<span class="red">+</span>”将IE8和IE7、IE6分离开来，此时，我们的IE8已经独立识别。
+    </li>
+    <li class="pl-24">
+        <p class="b">实例代码：</p>
+    </li>
+    <li class="pl-48">
+        <p class="orange">
+            .bb{<br />
+            height:32px;<br />
+            background-color:#f1ee18;<span class="green">/*所有识别*/</span><br />
+    <span class="red">.background-color:#00deff\9; <span class="green">/*IE6、7、8识别*/</span><br />
+    +background-color:#a200ff;<span class="green">/*IE6、7识别*/</span><br />
+    _background-color:#1e0bd1;<span class="green">/*IE6识别*/</span><br /></span>
+            }<br />
+        </p>
+        <p class="green">/*一个用于展示的class为bb的div标签*/</p>
+        <span class="blue">&#60;</span>
+        <span class="orange">div&#32;</span>
+        <span class="orange">class</span>
+        <span class="blue">="bb"&#62;&#60;/</span>
+        <span class="orange">div</span>
+        <span class="blue">&#62;</span>
+    </li>
+    <br />
+    <hr />
+    <li class="pl-24">
+        <p class="b">Hack应用情境（二）</p>
+    </li>
+    <li class="pl-48">
+        <p class="b">适用范围：IE:6.0,IE7.0,IE8.0,Firefox之间的兼容
+    </li>
+    <li class="pl-24">
+        <p class="b">实例说明：</p>
+    </li>
+    <li class="pl-48">
+        大家很容易的可以看出这是情境（一）的加强版，适用于更广泛的环境。其实情境（一）中也已经做到了把火狐与IE游览器区分开来了，现在我们要做的是把火狐从其它游览器中再次识别出来。大家仔细看下代码，大家会发现其实游览器识别是很简单的。火狐如何识别？对了，IE中对伪类支持不广泛，所以伪类是个不错的途径。(<span class="red">.yourClass,x:-moz-any-link, x:default</span>)注意，这个区分伪类往往IE7也能识别，所以最好还需要把IE7单独识别出来，且此方法对ff3.6 已无效，firefox的区分可以使用<span class="red">@-moz-document url-prefix(){}</span>
+    </li>
+    <li class="pl-24">
+        <p class="b">实例代码：</p>
+    </li>
+    <li class="pl-48">
+        <p class="orange">
+            .bb{<br />
+            height:32px;<br />
+            background-color:#f1ee18;<span class="green">/*所有识别*/</span><br />
+            background-color:#00deff\9; <span class="green">/*IE6、7、8识别*/</span><br />
+            +background-color:#a200ff;<span class="green">/*IE6、7识别*/</span><br />
+            _background-color:#1e0bd1;<span class="green">/*IE6识别*/</span><br />
+            }<br />
+<span class="red">.bb, x:-moz-any-link, x:default{background-color:#00ff00;}<span class="green">/*IE7 firefox3.5及以下 识别 */</span> <br />
+@-moz-document url-prefix(){.bb{background-color:#00ff00;}}<span class="green">/* 仅firefox 识别 */</span> <br />
+* +html .bb{background-color:#a200ff;}<span class="green">/* 仅IE7 识别 */</span></span>
+        </p><br />
+        <p class="green">/*一个用于展示的class为bb的div标签*/</p>
+        <span class="blue">&#60;</span>
+        <span class="orange">div&#32;</span>
+        <span class="orange">class</span>
+        <span class="blue">="bb"&#62;&#60;/</span>
+        <span class="orange">div</span>
+        <span class="blue">&#62;</span>
+    </li>
+    <br />
+    <hr />
+    <li class="pl-24">
+        <p class="b">Hack应用情境（三）</p>
+    </li>
+    <li class="pl-48">
+        <p class="b">适用范围：IE:6.0,IE7.0,IE8.0,Firefox,Safari(Chrome)之间的兼容
+    </li>
+    <li class="pl-24">
+        <p class="b">实例说明：</p>
+    </li>
+    <li class="pl-48">
+        我们现在将再次对我们的CSS进行加强了，使其能识别Safari(Chrome)游览器。这是基于它们的内核webkit来识别的，用法为<span class="red">@media screen and (-webkit-min-device-pixel-ratio:0)</span>
+    </li>
+    <li class="pl-24">
+        <p class="b">实例代码：</p>
+    </li>
+    <li class="pl-48">
+        <p class="orange">
+            .bb{<br />
+            height:32px;<br />
+            background-color:#f1ee18;<span class="green">/*所有识别*/</span><br />
+            background-color:#00deff\9; <span class="green">/*IE6、7、8识别*/</span><br />
+            +background-color:#a200ff;<span class="green">/*IE6、7识别*/</span><br />
+            _background-color:#1e0bd1;<span class="green">/*IE6识别*/</span><br />
+            }<br />
+            <span class="red">@media screen and (-webkit-min-device-pixel-ratio:0){.bb{background-color:#f1ee18}}{} <span class="green">/*safari(Chrome) 有效 */</span></span><br />
+            .bb, x:-moz-any-link, x:default{background-color:#00ff00;}<span class="green">/*IE7 firefox3.5及以下 识别 */</span> <br />
+            @-moz-document url-prefix(){.bb{background-color:#00ff00;}}<span class="green">/*仅firefox 识别*/</span> <br />
+            * +html .bb{background-color:#a200ff;}<span class="green">/* 仅IE7 识别 */</span>
+        </p><br />
+        <p class="green">/*一个用于展示的class为bb的div标签*/</p>
+        <span class="blue">&#60;</span>
+        <span class="orange">div&#32;</span>
+        <span class="orange">class</span>
+        <span class="blue">="bb"&#62;&#60;/</span>
+        <span class="orange">div</span>
+        <span class="blue">&#62;</span>
+    </li>
+    <br />
+    <hr />
+    <li class="pl-24">
+        <p class="b">Hack应用情境（四）</p>
+    </li>
+    <li class="pl-48">
+        <p class="b">适用范围：IE:6.0+，FireFox:2.0+，Opera 10.0+，Sarari 3.0+，Chrome全兼容<p>
+    </li>
+    <li class="pl-24">
+        <p class="b">实例说明：</p>
+    </li>
+    <li class="pl-48">
+        实例的具体代码在下面实例代码中已经列出，具体效果如此页面的顶端部分效果，您可以通过不同游览器检测该效果。这次我们基本把所有的主流游览器都兼容了，大家来看下代码。Opera的识别有一部分归功于“<span class="red">\0</span>”标记，这个标记只被IE8和Opera识别，特殊的标记往往造就的是我们更广泛的hack手段。下例的代码比较完整，大家可以选择参考。
+    </li>
+    <li class="pl-24">
+        <p class="b">实例代码：</p>
+    </li>
+    <li class="pl-48"><p class="blue">&#60;!DOCTYPE&#32;html&#32;PUBLIC&#32;"-//W3C//DTD&#32;XHTML&#32;1.0&#32;Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&#62;</p><span class="blue">&#60;</span><span class="orange">html&#32;</span><span class="red">xmlns</span><span class="blue">="http://www.w3.org/1999/xhtml"&#32;</span><span class="red">lang</span><span class="blue">="gb2312"&#62;</span></li><li class="pl-72"><span class="blue">&#60;</span><span class="orange">head</span><span class="blue">&#62;</span></li><li class="pl-96"><span class="blue">&#60;</span><span class="orange">meta&#32;</span><span class="red">http-equiv</span><span class="blue">=Content-Type&#32;</span><span class="red">content</span><span class="blue">="text/html; charset=gb2312"/&#62;</span></li><li class="pl-96"><span class="blue">&#60;</span><span class="orange">style&#32;</span><span class="red">type</span><span class="blue">="text/css"&#62;</span></li>
+    <li class="pl-96">
+        <p class="orange">
+            /***************************************** 各游览器兼容CSS **********************************************/<br />
+
+            .bb{height:32px;background-color:#f1ee18;<span class="green">/*所有识别*/</span> background-color:#00deff\9; <span class="green">/*IE6、7、8识别*/</span> +background-color:#a200ff;<span class="green">/*IE6、7识别*/</span> _background-color:#1e0bd1<span class="green">/*IE6识别*/</span>}
+            <br /><br />
+            @media screen and (-webkit-min-device-pixel-ratio:0){.bb{background-color:#f1ee18}}{} <span class="green">/* Safari(Chrome) 有效 */</span><br />
+            <span class="red">@media all and (min-width: 0px){ .bb{background-color:#f1ee18;<span class="green">/*opera and Safari(Chrome) and firefox*/ </span>background-color:#4cac70\0;}<span class="green">/* 仅 Opera 有效 */ </span> }{}</span>
+            <br /><br />
+            .bb, x:-moz-any-link, x:default{background-color:#4eff00;<span class="green">/*IE7、Firefox3.5及以下 识别 */</span>} <br />
+            @-moz-document url-prefix(){.bb{background-color:#4eff00;<span class="green">/*仅 Firefox 识别 */</span>}} <br />
+            * +html .bb{background-color:#a200ff;}<span class="green">/* 仅IE7 识别 */</span><br />
+            <br /><span class="green">/* 一般情况下 我们区分IE7 只用 +background-color 配合 _background-color 就行了
+如果必须写 .bb, x:-moz-any-link, x:default 这样的代码区分 Firefox3.5及以下  则谨记此写法对IE7也有效，故在其中要再重写一次 +background-color
+或者使用 * +html .bb{background-color:blue;} 方法仅对 IE7 有效。可使用 <span class="red">@-moz-document url-prefix(){}</span> 方法独立区分所有 firefox
+*/</span><br />
+            <br />.browsers td{width:8%;text-align:center;padding:8px;}}
+            <br />.browsercolor{color:#333;font-size:18px;font-weight:bold;}
+            <br />.ie6{background-color:#1e0bd1}
+            <br />.ie7{background-color:#a200ff}
+            <br />.ie8{background-color:#00deff}
+            <br />.firefox{background-color:#4eff00}
+            <br />.opera{background-color:#4cac70}
+            <br />.other{background-color:#f1ee18;}
+            <br />
+            <br />#tipTable td,#tipTable th{border:1px solid black;width:56px;height:16px;text-align:center;}
+            <br />#wordTable td{margin-left:8px;}
+
+            <br />#firefoxTip{display:none;}
+            <br />#firefoxTip, x:-moz-any-link, x:default{display:block;<span class="green">/*IE7 firefox3.5及以下 识别 */</span>+display:none<span class="green">/*再区分一次IE7*/</span>}
+
+            <br />@-moz-document url-prefix(){#firefoxTip{display:block;<span class="green">/*仅 firefox 识别 */</span>}}
+            <br />#ChromeTip{display:none;}
+
+            <br />@media screen and (-webkit-min-device-pixel-ratio:0){#ChromeTip{display:block;}}{} <span class="green">/* safari(Chrome) 有效 */</span>
+            <br />@media all and (min-width: 0px){#ChromeTip{display:none\0;} <span class="green">/* 仅 Opera 有效 */ }{}</span>
+        </p>
+    </li>              <li class="pl-96"><span class="blue">&#60;&#47;</span><span class="orange">style</span><span class="blue">&#62;</span></li><li class="pl-72"><span class="blue">&#60;&#47;</span><span class="orange">head</span><span class="blue">&#62;</span></li><li class="pl-72"><span class="blue">&#60;</span><span class="orange">body</span><span class="blue">&#62;</span></li><li class="pl-96"><span class="blue">&#60;</span><span class="orange">table&#32;</span><span class="red">class</span><span class="blue">="browsers"&#32;</span><span class="red">width</span><span class="blue">="100%"&#32;</span><span class="red">cellspacing</span><span class="blue">="0"&#32;</span><span class="red">cellpadding</span><span class="blue">="0"&#62;</span></li><li class="pl-120"><span class="blue">&#60;</span><span class="orange">tr</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;IE6&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;IE7&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li>        <li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;IE8&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;Firefox&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;Opera&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;Safari(Chrome)&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-120"><span class="blue">&#60;&#47;</span><span class="orange">tr</span><span class="blue">&#62;</span></li>
+    <li class="pl-120"><span class="blue">&#60;</span><span class="orange">tr&#32;</span><span class="red">class</span><span class="blue">="browsercolor"&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span> <span class="red">class</span><span class="blue">="ie6"&#62;IE6&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span> <span class="red">class</span><span class="blue">="ie7"&#62;IE7&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li>        <li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span> <span class="red">class</span><span class="blue">="ie8"&#62;IE8&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span> <span class="red">class</span><span class="blue">="firefox"&#62;Firefox&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span> <span class="red">class</span><span class="blue">="opera"&#62;Opera&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span> <span class="red">class</span><span class="blue">="other"&#62;Safari(Chrome)&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-144"><span class="blue">&#60;</span><span class="orange">td</span><span class="blue">&#62;&#60;&#47;</span><span class="orange">td</span><span class="blue">&#62;</span></li><li class="pl-120"><span class="blue">&#60;&#47;</span><span class="orange">tr</span><span class="blue">&#62;</span></li><li class="pl-96"><span class="blue">&#60;&#47;</span><span class="orange">table</span><span class="blue">&#62;</span></li><li class="pl-96"><span class="blue">&#60;</span><span class="orange">div&#32;</span><span class="red">class</span><span class="blue">="bb"&#62;</span></li><li class="pl-120"><span class="blue">&#60;</span><span class="orange">span&#32;</span><span class="red">style</span><span class="blue">="display:none;display:block\0;display:none\9;"&#62;Opera的辨别色是深绿色，Opera游览器很时髦么。&#60;/</span><span class="orange">span&#32;</span><span class="blue">&#62;</span></li><li class="pl-120"><span class="blue">&#60;</span><span class="orange">span&#32;</span><span class="red">id</span><span class="blue">="firefoxTip"&#62;Firefox的辨别色是浅绿色，Firefox是很强大的游览器。&#60;/</span><span class="orange">span&#32;</span><span class="blue">&#62;</span></li><li class="pl-120"><span class="blue">&#60;</span><span class="orange">span&#32;</span><span class="red">id</span><span class="blue">="ChromeTip"&#62;Safari和Chrome的辨别色是金黄色，Safari和Chrome使用的都是Webkit内核&#60;/</span><span class="orange">span&#32;</span><span class="blue">&#62;</span></li><li class="pl-120"><p class="blue">&#60;!--[if IE 8]&#62;IE8的辨别色是蓝色，新版IE8的功能可是不少呢。&#60;![endif]--&#62; </p></li><li class="pl-120"><p class="blue">&#60;!--[if IE 7]&#62;IE7的辨别色是紫色，IE7还可以凑合着用！&#60;![endif]--&#62; </p></li><li class="pl-120"><p class="blue">&#60;!--[if IE 6]&#62;IE6的辨别色是红色，不过，IE6可是有点落后了！&#60;![endif]--&#62; </p></li></li><li class="pl-96"><span class="blue">&#60;&#47;</span><span class="orange">div</span><span class="blue">&#62;</span></li><li class="pl-72"><span class="blue">&#60;&#47;</span><span class="orange">body</span><span class="blue">&#62;</span></li>        <li class="pl-48"><span class="blue">&#60;&#47;</span><span class="orange">html</span><span class="blue">&#62;</span></li></ul>
+</body>
+</html>
